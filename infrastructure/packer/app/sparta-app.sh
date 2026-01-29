@@ -26,10 +26,10 @@ cd /home/ubuntu
 sudo rm -rf nodejs20-se-test-app-2025
 
 # Clone repository
-git clone https://github.com/Giubis/nodejs20-se-test-app-2025.git
+git clone https://github.com/Giubis/packer-terraform-actions.git
 
 # Install Node dependencies
-cd nodejs20-se-test-app-2025/app
+cd packer-terraform-actions/infrastructure/website/nodejs20-se-test-app-2025/app
 npm install
 
 # Install PM2 globally
