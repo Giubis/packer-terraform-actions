@@ -34,7 +34,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd packer-terraform-actions/infrastructure/website/nodejs20-se-test-app-2025/app
+            cd packer-terraform-actions
             git pull origin main
+            cd infrastructure/website/nodejs20-se-test-app-2025/app
             npm install
-            pm2 restart app || node app.js &
+            pm2 start app.js
