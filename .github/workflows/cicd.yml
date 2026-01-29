@@ -15,6 +15,12 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
       - name: Set up Git
         run: |
           git config --global user.name "github-actions[bot]"
@@ -24,7 +30,7 @@ jobs:
         run: |
           git checkout main
           git pull origin main
-          git merge --no-ff dev -m "chore: auto-merge dev to main [skip ci]"
+          git merge --no-ff dev -m "chore: auto-merge dev to main"
           git push origin main
 
       - name: Deploy to AWS
