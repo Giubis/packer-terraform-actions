@@ -16,10 +16,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd infrastructure/website/nodejs20-se-test-app-2025/app
+          npm install
 
       - name: Run tests
-        run: npm test
+        run: |
+          cd infrastructure/website/nodejs20-se-test-app-2025/app
+          npm test
 
       - name: Set up Git
         run: |
