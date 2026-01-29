@@ -26,3 +26,15 @@ jobs:
           git pull origin main
           git merge --no-ff dev -m "chore: auto-merge dev to main [skip ci]"
           git push origin main
+
+      - name: Deploy to AWS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd packer-terraform-actions/infrastructure/website/nodejs20-se-test-app-2025/app
+            git pull origin main
+            npm install
+            pm2 restart app || node app.js &
