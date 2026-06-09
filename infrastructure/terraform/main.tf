@@ -12,6 +12,7 @@ resource "aws_vpc" "tech518-giuseppe-vpc" {
 }
 
 resource "aws_internet_gateway" "tech518-giuseppe-igw" {
+
   vpc_id = aws_vpc.tech518-giuseppe-vpc.id
 
   tags = {
