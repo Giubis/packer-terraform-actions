@@ -117,7 +117,7 @@ resource "aws_instance" "tech518-giuseppe-db-instance" {
   instance_type          = "t3.micro"
   subnet_id              = aws_subnet.tech518-giuseppe-private-subnet.id
   vpc_security_group_ids = [aws_security_group.tech518-giuseppe-db-sg.id]
-  key_name               = "tech518-giuseppe-key-pair"
+  key_name               = "giuseppe-aws"
 
   tags = {
     Name = "tech518-giuseppe-sparta-db"
@@ -130,7 +130,7 @@ resource "aws_instance" "tech518-giuseppe-app-instance" {
   subnet_id                   = aws_subnet.tech518-giuseppe-public-subnet.id
   vpc_security_group_ids      = [aws_security_group.tech518-giuseppe-app-sg.id]
   associate_public_ip_address = true
-  key_name                    = "tech518-giuseppe-key-pair"
+  key_name                    = "giuseppe-aws"
 
   user_data = templatefile("./user-data.sh.tpl", {
     db_ip = aws_instance.tech518-giuseppe-db-instance.private_ip
